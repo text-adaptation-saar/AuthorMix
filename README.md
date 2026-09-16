@@ -147,12 +147,6 @@ GRPO training.
 
 ## Citation
 
-**AuthorMix: Modular Authorship Style Transfer via Layer-wise Adapter Mixing**  
-Sarubi Thillainathan, Ji-Ung Lee, Michael Sullivan, and Alexander Koller.  
-Accepted to **[EMNLP 2026](https://2026.emnlp.org/)**, Budapest, Hungary.
-
-[Paper on arXiv](https://arxiv.org/abs/2603.23069)
-
 If you use AuthorMix in your research, please cite:
 
 ```bibtex
