@@ -19,6 +19,68 @@ from llamafactory.x_my_pta_scripts.evaluation_patel.evaluation_metrics import _g
 DEFAULT_AUTHOR_TRAIN_DATA_DIR = PROJECT_ROOT / "data/dataset_author_eval/sents/text"
 DEFAULT_STYLE_MODEL_PATH = "AIDA-UPM/star"
 
+
+def generate_with_rl_model(
+    model,
+    tokenizer,
+    input_texts: List[str],
+    batch_size: int = 4,
+    max_new_tokens: int = 128,
+) -> List[str]:
+    """Optional single-pass generation with an already loaded GRPO mixing model.
+
+    Not called by training. Uses the original experiment's Llama prompt and
+    decoding settings; adapt the prompt if your adapters use another format.
+    Pass a tokenizer configured for left padding and with a pad token set.
+    Leaves the model in eval mode. No scoring or repeated-seed evaluation.
+
+    Example with an existing trained model and its tokenizer:
+        outputs = generate_with_rl_model(model, tokenizer, ["Text to rewrite."])
+    """
+    device = str(next(model.parameters()).device)
+    model.eval()
+    outputs = []
+
+    bos_token = ""
+    prompts = []
+    for text in input_texts:
+        content = "\n\nOnly output the paraphrased version. Paraphrase\n" + text
+        prompt = (
+            f"{bos_token}<|start_header_id|>user<|end_header_id|>"
+            f"{content}<|eot_id|>"
+            f"<|start_header_id|>assistant<|end_header_id|>\n\n"
+        )
+        prompts.append(prompt)
+
+
+    with torch.no_grad():
+        for i in range(0, len(prompts), batch_size):
+            batch_prompts = prompts[i : i + batch_size]
+            encoded = tokenizer(
+                batch_prompts,
+                return_tensors="pt",
+                padding=True,
+                max_length=256,
+                truncation=True,
+            )
+            encoded = {k: v.to(device) for k, v in encoded.items()}
+            input_length = encoded["input_ids"].shape[1]
+
+            generated = model.generate(
+                **encoded,
+                max_new_tokens=max_new_tokens,
+                do_sample=True,
+                top_p=0.95,
+                eos_token_id=tokenizer.eos_token_id,
+                pad_token_id=tokenizer.pad_token_id,
+            )
+            decoded = tokenizer.batch_decode(
+                generated[:, input_length:], skip_special_tokens=True
+            )
+            outputs.extend([t.strip() for t in decoded])
+
+    return outputs
+
 def to_json_serializable(obj):
     if isinstance(obj, torch.Tensor):
         return obj.detach().cpu().tolist() if obj.numel() > 1 else float(obj.item())

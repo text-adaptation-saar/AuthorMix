@@ -81,7 +81,10 @@ The two GRPO weight-mixing implementations are:
   [`PTA/19_RL_on_10src_15tgt_authors/weight_optimization_per_tgt_author/`](PTA/19_RL_on_10src_15tgt_authors/weight_optimization_per_tgt_author/)
   learns separate adapter mixing weights for each layer.
 
-Each directory contains its `run_rl_per_pair.py` training entry point.
+Each directory contains its `run_rl_per_pair.py` training entry point and an
+optional `generate_with_rl_model()` sample for generating text with an already
+loaded mixing model. The sample is not called during training and does not run
+metric scoring or repeated-seed evaluation.
 
 Place your Llama base model and author adapters locally, then edit an example config:
 
