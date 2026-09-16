@@ -137,3 +137,30 @@ The `data/`, `model/`, `hparams/`, and `extras/` directories under
 paths. AuthorMix training and mixing helpers are in `x_my_pta_scripts/`.
 `evaluation_metrics.py` contains only the embedding and MIS helpers needed for
 GRPO training.
+
+## Citation
+
+**AuthorMix: Modular Authorship Style Transfer via Layer-wise Adapter Mixing**  
+Sarubi Thillainathan, Ji-Ung Lee, Michael Sullivan, and Alexander Koller.  
+Accepted to **[EMNLP 2026](https://2026.emnlp.org/)**, Budapest, Hungary.
+
+[Paper on arXiv](https://arxiv.org/abs/2603.23069)
+
+If you use AuthorMix in your research, please cite:
+
+```bibtex
+@inproceedings{thillainathan2026authormix,
+  title = {{AuthorMix}: Modular Authorship Style Transfer via Layer-wise Adapter Mixing},
+  author = {Thillainathan, Sarubi and Lee, Ji-Ung and Sullivan, Michael and Koller, Alexander},
+  booktitle = {Proceedings of the 2026 Conference on Empirical Methods in Natural Language Processing},
+  year = {2026},
+  address = {Budapest, Hungary},
+  eprint = {2603.23069},
+  archivePrefix = {arXiv},
+  primaryClass = {cs.CL},
+  url = {https://arxiv.org/abs/2603.23069},
+  note = {Accepted; publication forthcoming}
+}
+```
+
+The citation will be updated with the official ACL Anthology entry when available.
