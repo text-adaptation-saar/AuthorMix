@@ -72,6 +72,17 @@ This creates and registers source-author training/validation datasets. The separ
 
 ## Train
 
+The two GRPO weight-mixing implementations are:
+
+- **Adapterwise GRPO weight mixing:**
+  [`PTA/19_RL_on_10src_15tgt_authors/adapterwise_weight_optimization_per_tgt_author_layerwiseFalse/`](PTA/19_RL_on_10src_15tgt_authors/adapterwise_weight_optimization_per_tgt_author_layerwiseFalse/)
+  learns one mixing weight per adapter, shared across layers.
+- **Layerwise GRPO weight mixing:**
+  [`PTA/19_RL_on_10src_15tgt_authors/weight_optimization_per_tgt_author/`](PTA/19_RL_on_10src_15tgt_authors/weight_optimization_per_tgt_author/)
+  learns separate adapter mixing weights for each layer.
+
+Each directory contains its `run_rl_per_pair.py` training entry point.
+
 Place your Llama base model and author adapters locally, then edit an example config:
 
 ```bash
@@ -102,8 +113,10 @@ validation and checkpoint resumption. No post-training evaluation is launched.
 
 ```text
 PTA/19_RL_on_10src_15tgt_authors/
-  weight_optimization_per_tgt_author/run_rl_per_pair.py
-  adapterwise_weight_optimization_per_tgt_author_layerwiseFalse/run_rl_per_pair.py
+  weight_optimization_per_tgt_author/  # Layerwise GRPO weight mixing
+    run_rl_per_pair.py
+  adapterwise_weight_optimization_per_tgt_author_layerwiseFalse/  # Adapterwise GRPO weight mixing
+    run_rl_per_pair.py
   create_author_llama_factory_json.py
   register_author_json_in_dataset_info.py
 src/llamafactory/         # LLaMA-Factory framework with custom AuthorMix modules
