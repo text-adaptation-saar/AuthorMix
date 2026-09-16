@@ -1,4 +1,9 @@
-# AuthorMix
+# AuthorMix: Modular Authorship Style Transfer via Layer-wise Adapter Mixing
+
+Sarubi Thillainathan, Ji-Ung Lee, Michael Sullivan, and Alexander Koller.  
+Accepted to **[EMNLP 2026](https://2026.emnlp.org/)**, Budapest, Hungary.
+
+[Paper on arXiv](https://arxiv.org/abs/2603.23069)
 
 ## Paper workflow
 
@@ -6,8 +11,9 @@ AuthorMix adapts a language model to a target author's style by learning to mix
 existing author LoRA adapters:
 
 1. **Train author adapters.** In our experiments, we used LLaMA-Factory to train
-   one LoRA adapter for each high-resource author, using the same base Llama model
-   and training setup.
+   one LoRA adapter for each of the ten high-resource authors from
+   [StyleTunedLM](https://github.com/cauchy221/StyleTunedLM), using the same base
+   Llama model and training setup.
 2. **Select adapters for a target author.** AuthorMix uses style similarity to
    select relevant adapters from this pool, using the target author's reference
    texts.
@@ -18,8 +24,9 @@ existing author LoRA adapters:
 
 We implemented AuthorMix in `src/llamafactory/x_my_pta_scripts/` and integrated it
 with LLaMA-Factory to reuse its dataset loading, formatting, and model utilities.
-This repository contains the mixing-weight training stage; the pretrained author
-adapters are supplied separately.
+This repository includes the processed datasets, high-resource adapter training
+configs, GRPO mixing code, and single-pass evaluation. Base-model and adapter
+weights are supplied separately or trained locally.
 
 You can train the author LoRA adapters with your own scripts and data format;
 LLaMA-Factory's training pipeline and dataset format are not required. Keep your
