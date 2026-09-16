@@ -156,6 +156,7 @@ If you use AuthorMix in your research, please cite:
   booktitle = {Proceedings of the 2026 Conference on Empirical Methods in Natural Language Processing},
   year = {2026},
   address = {Budapest, Hungary},
+  publisher = {Association for Computational Linguistics},
   eprint = {2603.23069},
   archivePrefix = {arXiv},
   primaryClass = {cs.CL},
