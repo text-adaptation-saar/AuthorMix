@@ -1,0 +1,49 @@
+# Local environment and credentials
+.env
+.env.*
+!.env.example
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.pytest_cache/
+.ruff_cache/
+.cache/
+.DS_Store
+.idea/
+.vscode/
+# Research inputs and generated artifacts (code-only repository)
+/data/
+/models/
+/adapters/
+/results/
+/outputs/
+/cache/
+**/results/
+**/logs/
+**/checkpoint-*/
+wandb/
+lightning_logs/
+*.safetensors
+*.bin
+*.pt
+*.pth
+*.ckpt
+*.arrow
+*.parquet
+*.log
+*.pdf
+configs/*.local.json
+
+# Local maintenance notes
+/LOCAL_NOTES.md
+
+# Local environment setup (not published for now)
+/ENV_SETUP.local.md
+/environment.yml
+/requirements.txt
+/pyproject.toml
+/scripts/check_environment.py

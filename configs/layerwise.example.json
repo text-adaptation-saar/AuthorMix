@@ -1,0 +1,31 @@
+{
+  "variant": "layerwise",
+  "arguments": {
+    "base_model_path": "models/Llama-3.1-8B-Instruct",
+    "adapter_pattern_path": "adapters/{AUTHOR}",
+    "author_train_data_dir": "data/dataset_author_eval/sents/text",
+    "output_directory_path": "results/layerwise",
+    "style_model_path": "AIDA-UPM/star",
+    "rl_style_model_path": "AIDA-UPM/star",
+    "num_adapters": 4,
+    "train_sample_size": 50,
+    "val_sample_size": 10,
+    "learning_rate": 0.02,
+    "max_steps": 300,
+    "num_generations": 16,
+    "rl_batch_size": 4,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "beta": 0.0,
+    "max_length": 256,
+    "max_new_tokens": 256,
+    "logging_steps": 10,
+    "toward_exp": 0.5,
+    "mis_exp": 0.5,
+    "use_author_specific_dataset": 1,
+    "template": "llama3",
+    "weight_init": "zeros",
+    "seed": 42,
+    "test_data_path": "data/dataset_author_eval/sents/json/test_src10_tgt15_with_neutral.json"
+  }
+}
