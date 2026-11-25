@@ -15,8 +15,7 @@ dist/
 .DS_Store
 .idea/
 .vscode/
-# Research inputs and generated artifacts (code-only repository)
-/data/
+# Model weights and generated artifacts
 /models/
 /adapters/
 /results/
@@ -47,3 +46,22 @@ configs/*.local.json
 /requirements.txt
 /pyproject.toml
 /scripts/check_environment.py
+
+# Generated corpus downloads and intermediate datasets
+/dataset_preparation/data/
+
+# Keep only the evaluation dataset and metadata in the release
+/data/*
+!/data/authors.json
+!/data/dataset_info.json
+!/data/dataset_author_eval/
+/data/dataset_author_eval/*
+!/data/dataset_author_eval/sents/
+/data/dataset_author_eval/sents/*
+!/data/dataset_author_eval/sents/json/
+/data/dataset_author_eval/sents/json/*
+!/data/dataset_author_eval/sents/json/test_src10_tgt10.json
+
+# Local CAV triplets and training outputs
+/cav_training/data/
+/cav_training/outputs/

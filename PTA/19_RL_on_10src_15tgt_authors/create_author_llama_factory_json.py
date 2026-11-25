@@ -1,7 +1,7 @@
 """
 Create LLaMA-Factory compatible JSON files for each source author.
 
-Reads source author names from test_src10_tgt15_with_neutral.json,
+Reads source author names from test_src10_tgt10.json,
 loads their text from data/dataset_author_eval/sents/text/{author}/{split}.txt,
 and creates JSON files in the same format as the wiki paraphrase data:
     [{"instruction": "Paraphrase", "input": "<text>", "output": ""}, ...]
@@ -16,7 +16,7 @@ from pathlib import Path
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
 
-TEST_DATA_PATH = PROJECT_ROOT / "data/dataset_author_eval/sents/json/test_src10_tgt15_with_neutral.json"
+TEST_DATA_PATH = PROJECT_ROOT / "data/dataset_author_eval/sents/json/test_src10_tgt10.json"
 TEXT_BASE_DIR = PROJECT_ROOT / "data/dataset_author_eval/sents/text"
 OUTPUT_BASE_DIR = PROJECT_ROOT / "data/dataset_author_eval/sents/llama_factory_json"
 DATASET_INFO_PATH = PROJECT_ROOT / "data/dataset_info.json"

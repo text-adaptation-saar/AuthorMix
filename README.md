@@ -1,9 +1,10 @@
 # AuthorMix: Modular Authorship Style Transfer via Layer-wise Adapter Mixing
 
 Sarubi Thillainathan, Ji-Ung Lee, Michael Sullivan, and Alexander Koller.  
-Accepted to **[EMNLP 2026](https://2026.emnlp.org/)**, Budapest, Hungary.
+Published at **EMNLP 2026**, Budapest, Hungary.
 
-[Paper on arXiv](https://arxiv.org/abs/2603.23069)
+[Published paper (ACL Anthology)](https://aclanthology.org/2026.emnlp-main.2215/) ·
+[arXiv preprint](https://arxiv.org/abs/2603.23069)
 
 ## Paper workflow
 
@@ -24,9 +25,10 @@ existing author LoRA adapters:
 
 We implemented AuthorMix in `src/llamafactory/x_my_pta_scripts/` and integrated it
 with LLaMA-Factory to reuse its dataset loading, formatting, and model utilities.
-This repository includes the processed datasets, high-resource adapter training
-configs, GRPO mixing code, and single-pass evaluation. Base-model and adapter
-weights are supplied separately or trained locally.
+This repository includes the evaluation dataset, high-resource adapter training
+configs, GRPO mixing code, and single-pass evaluation. Download the ten trained
+author adapters from [Hugging Face](https://huggingface.co/sarubi/AuthorMix)
+or train them locally. Obtain the Llama base model separately.
 
 You can train the author LoRA adapters with your own scripts and data format;
 LLaMA-Factory's training pipeline and dataset format are not required. Keep your
@@ -40,42 +42,52 @@ The current adapter loader expects PEFT-compatible checkpoints.
 Use a LLaMA-Factory-compatible environment with PyTorch, Transformers, PEFT,
 TRL (for GRPO), Sentence Transformers, and `mutual-implication-score` (MIS).
 The LLaMA-Factory modules used by AuthorMix are included in this repository.
-Training requires an NVIDIA GPU; supply the base model, author adapters, and
-datasets separately.
+Training requires an NVIDIA GPU and base-model weights. Adapter SFT uses a
+separate full LLaMA-Factory checkout; the included framework subset supports
+AuthorMix GRPO training.
 
 ## Data
 
-Provide an author reference JSON containing:
+The released test set contains **10 source authors × 10 target authors** (100
+pairs), with 16 texts per author. The configs use
+`data/dataset_author_eval/sents/json/test_src10_tgt10.json`.
+`data/authors.json` lists the high-resource, source, and target authors.
 
-```json
-{
-  "source_authors": {"Source_Author": ["Source reference text."]},
-  "target_authors": {"Target_Author": ["Target style reference text."]}
-}
-```
+The 10 × 10 test set is the only bundled dataset. The repository also includes
+the author lists and the LLaMA-Factory dataset registry, which describes where
+to place locally prepared files. The test JSON supplies original source
+sentences for evaluation and target references for adapter selection and GRPO
+rewards.
 
-The `test_data_path` configuration field points to this file. Despite the historical
-name, these references are used in training for adapter selection and rewards.
-Keep held-out test texts separate.
+See [Dataset preparation](dataset_preparation/README.md) for the corpus sources
+and instructions for preparing GRPO prompts, adapter selection reference texts,
+and optional SFT data. The StyleTunedLM corpus supplies the high-resource
+authors. The evaluation authors come from the additional Project Gutenberg
+corpus.
 
-The preparation scripts expect:
+## Train high-resource adapters
 
-```text
-data/dataset_author_eval/sents/json/test_src10_tgt15_with_neutral.json
-data/dataset_author_eval/sents/text/<Source_Author>/train.txt
-data/dataset_author_eval/sents/text/<Source_Author>/val.txt
-data/dataset_author_eval/sents/text/<Adapter_Author>/train.txt
-```
+The ten configs in `PTA/10_author_models_ft/configs/` use the saved experiment
+settings: LoRA rank 8, alpha 16, dropout 0.05, all target modules, learning rate
+0.0001, 5,000 steps, 200 warmup steps, sequence length 256, batch size 8 with
+four gradient accumulation steps, and bf16. The best validation-loss checkpoint
+is selected for each adapter.
 
-Each text file contains one example per line. Create `data/dataset_info.json` with
-`{}` if no registry exists, then run:
+You can skip this step if you download the trained adapters from Hugging Face.
+To retrain them, [prepare the local SFT data](dataset_preparation/README.md#prepare-adapter-training-pairs),
+then run from this repository root with a full LLaMA-Factory checkout and its SFT
+environment:
 
 ```bash
-python PTA/19_RL_on_10src_15tgt_authors/create_author_llama_factory_json.py
+python PTA/10_author_models_ft/train_adapters.py \
+  --llamafactory-root /path/to/LLaMA-Factory \
+  --base-model models/Llama-3.1-8B-Instruct --authors MT --dry-run
 ```
 
-This creates and registers source-author training/validation datasets. The separate
-`register_author_json_in_dataset_info.py` script can register existing files.
+Remove `--dry-run` to train. Omit `--authors MT` to train all ten authors in
+sequence. The resulting adapters are saved under `adapters/<code>/`, matching
+the GRPO configs. The launcher uses the external checkout's training code and
+the locally prepared data.
 
 ## Train
 
@@ -93,7 +105,9 @@ optional `generate_with_rl_model()` sample for generating text with an already
 loaded mixing model. The sample is not called during training and does not run
 metric scoring or repeated-seed evaluation.
 
-Place your Llama base model and author adapters locally, then edit an example config:
+Place your Llama base model and author adapters locally and
+[prepare the GRPO training data](dataset_preparation/README.md#prepare-grpo-training-data).
+Then edit an example config:
 
 ```bash
 cp configs/layerwise.example.json configs/layerwise.local.json
@@ -119,9 +133,54 @@ Training saves learned weights and checkpoints in
 and `training_config.json` in the target directory. GRPO retains its in-training
 validation and checkpoint resumption. No post-training evaluation is launched.
 
+## Evaluate
+
+Run one generation pass per source–target pair using saved GRPO weights:
+
+```bash
+python evaluation/evaluate.py \
+  --variant layerwise --training-dir results/layerwise \
+  --base-model models/Llama-3.1-8B-Instruct \
+  --output-dir results/evaluation_layerwise --cola
+```
+
+Use `--variant adapterwise --training-dir results/adapterwise` for adapterwise
+mixing. `--target-author` selects one target and `--dry-run` checks the test data
+and saved training metadata without loading models. The metadata's adapter paths
+must still resolve from the repository root. Use a fresh output directory for
+each evaluation.
+
+This evaluates the final weights in `training_results.json`, using the original
+`generate_with_rl_model()` helper, seed 42 and up to 256 new tokens. It does not
+retry, select, or duplicate generations, and has no repeated-seed loop. A single
+pass is not an exact reproduction of the paper's multi-run aggregate.
+
+Each pair JSON records the generated texts and metric components; `summary.json`
+contains means across pairs:
+
+| Metric | Implementation |
+| --- | --- |
+| Toward | Original document-level STAR style similarity, scaled relative to the source–target baseline |
+| MIS | Mean Mutual Implication Score for outputs versus source texts |
+| Joint | Original `joint_without_away_scaled_mis`: square root of scaled Toward × scaled MIS |
+| CoLA (`--cola`) | `textattack/roberta-base-CoLA`, with the original long-text chunking |
+| CAV Toward / SBERT / Joint (`--cav-model PATH`) | Original CAV angular Toward, all-mpnet-base-v2 semantic similarity, and their geometric mean |
+
+The original STAR/MIS functions are in `evaluation/metrics.py`; fluency functions
+are in `evaluation/cola.py`. To use the paper's independent CAV encoder, supply
+the **CAV exp04 gutenberg50-2k-chunk** SentenceTransformer checkpoint. That locally
+trained checkpoint is not bundled. Its [CAV training folder](cav_training/README.md)
+contains the original 50-author list, triplet preparation guidance, and
+experiment scripts.
+
 ## Structure
 
 ```text
+data/                    # 10 × 10 evaluation dataset and metadata
+dataset_preparation/     # Gutenberg collection, cleaning, splitting, and SFT pairing
+evaluation/              # Single-pass generation and paper metrics
+cav_training/            # 50-author CAV encoder training and data preparation
+PTA/10_author_models_ft/  # High-resource adapter training launcher and configs
 PTA/19_RL_on_10src_15tgt_authors/
   weight_optimization_per_tgt_author/  # Layerwise GRPO weight mixing
     run_rl_per_pair.py
@@ -150,19 +209,18 @@ GRPO training.
 If you use AuthorMix in your research, please cite:
 
 ```bibtex
-@inproceedings{thillainathan2026authormix,
-  title = {{AuthorMix}: Modular Authorship Style Transfer via Layer-wise Adapter Mixing},
+@inproceedings{thillainathan-etal-2026-authormix,
+  title = {{A}uthor{M}ix: Modular Authorship Style Transfer via Layer-wise Adapter Mixing},
   author = {Thillainathan, Sarubi and Lee, Ji-Ung and Sullivan, Michael and Koller, Alexander},
+  editor = {Lee, Hung-Yi and Dev, Sunipa and Li, Junyi Jessy and Elliott, Desmond},
   booktitle = {Proceedings of the 2026 Conference on Empirical Methods in Natural Language Processing},
+  month = oct,
   year = {2026},
   address = {Budapest, Hungary},
   publisher = {Association for Computational Linguistics},
-  eprint = {2603.23069},
-  archivePrefix = {arXiv},
-  primaryClass = {cs.CL},
-  url = {https://arxiv.org/abs/2603.23069},
-  note = {Accepted; publication forthcoming}
+  url = {https://aclanthology.org/2026.emnlp-main.2215/},
+  doi = {10.18653/2026.emnlp-main.2215},
+  pages = {50382--50416},
+  isbn = {979-8-89176-459-0}
 }
 ```
-
-The citation will be updated with the official ACL Anthology entry when available.

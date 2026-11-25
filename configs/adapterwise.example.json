@@ -26,6 +26,6 @@
     "template": "llama3",
     "weight_init": "zeros",
     "seed": 42,
-    "test_data_path": "data/dataset_author_eval/sents/json/test_src10_tgt15_with_neutral.json"
+    "test_data_path": "data/dataset_author_eval/sents/json/test_src10_tgt10.json"
   }
 }

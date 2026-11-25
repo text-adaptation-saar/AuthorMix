@@ -1,0 +1,152 @@
+{
+  "author_adapter_MT_train": {
+    "file_name": "adapter_training/MT/train.json"
+  },
+  "author_adapter_MT_val": {
+    "file_name": "adapter_training/MT/val.json"
+  },
+  "author_adapter_MT_test": {
+    "file_name": "adapter_training/MT/test.json"
+  },
+  "author_adapter_VW_train": {
+    "file_name": "adapter_training/VW/train.json"
+  },
+  "author_adapter_VW_val": {
+    "file_name": "adapter_training/VW/val.json"
+  },
+  "author_adapter_VW_test": {
+    "file_name": "adapter_training/VW/test.json"
+  },
+  "author_adapter_VL_train": {
+    "file_name": "adapter_training/VL/train.json"
+  },
+  "author_adapter_VL_val": {
+    "file_name": "adapter_training/VL/val.json"
+  },
+  "author_adapter_VL_test": {
+    "file_name": "adapter_training/VL/test.json"
+  },
+  "author_adapter_CPG_train": {
+    "file_name": "adapter_training/CPG/train.json"
+  },
+  "author_adapter_CPG_val": {
+    "file_name": "adapter_training/CPG/val.json"
+  },
+  "author_adapter_CPG_test": {
+    "file_name": "adapter_training/CPG/test.json"
+  },
+  "author_adapter_GO_train": {
+    "file_name": "adapter_training/GO/train.json"
+  },
+  "author_adapter_GO_val": {
+    "file_name": "adapter_training/GO/val.json"
+  },
+  "author_adapter_GO_test": {
+    "file_name": "adapter_training/GO/test.json"
+  },
+  "author_adapter_JA_train": {
+    "file_name": "adapter_training/JA/train.json"
+  },
+  "author_adapter_JA_val": {
+    "file_name": "adapter_training/JA/val.json"
+  },
+  "author_adapter_JA_test": {
+    "file_name": "adapter_training/JA/test.json"
+  },
+  "author_adapter_NH_train": {
+    "file_name": "adapter_training/NH/train.json"
+  },
+  "author_adapter_NH_val": {
+    "file_name": "adapter_training/NH/val.json"
+  },
+  "author_adapter_NH_test": {
+    "file_name": "adapter_training/NH/test.json"
+  },
+  "author_adapter_OW_train": {
+    "file_name": "adapter_training/OW/train.json"
+  },
+  "author_adapter_OW_val": {
+    "file_name": "adapter_training/OW/val.json"
+  },
+  "author_adapter_OW_test": {
+    "file_name": "adapter_training/OW/test.json"
+  },
+  "author_adapter_PGW_train": {
+    "file_name": "adapter_training/PGW/train.json"
+  },
+  "author_adapter_PGW_val": {
+    "file_name": "adapter_training/PGW/val.json"
+  },
+  "author_adapter_PGW_test": {
+    "file_name": "adapter_training/PGW/test.json"
+  },
+  "author_adapter_SR_train": {
+    "file_name": "adapter_training/SR/train.json"
+  },
+  "author_adapter_SR_val": {
+    "file_name": "adapter_training/SR/val.json"
+  },
+  "author_adapter_SR_test": {
+    "file_name": "adapter_training/SR/test.json"
+  },
+  "author_eval_Baum_L__Frank_train": {
+    "file_name": "dataset_author_eval/sents/llama_factory_json/Baum_L._Frank/train.json"
+  },
+  "author_eval_Baum_L__Frank_val": {
+    "file_name": "dataset_author_eval/sents/llama_factory_json/Baum_L._Frank/val.json"
+  },
+  "author_eval_Brontë_Charlotte_train": {
+    "file_name": "dataset_author_eval/sents/llama_factory_json/Brontë_Charlotte/train.json"
+  },
+  "author_eval_Brontë_Charlotte_val": {
+    "file_name": "dataset_author_eval/sents/llama_factory_json/Brontë_Charlotte/val.json"
+  },
+  "author_eval_Carroll_Lewis_train": {
+    "file_name": "dataset_author_eval/sents/llama_factory_json/Carroll_Lewis/train.json"
+  },
+  "author_eval_Carroll_Lewis_val": {
+    "file_name": "dataset_author_eval/sents/llama_factory_json/Carroll_Lewis/val.json"
+  },
+  "author_eval_Dickens_Charles_train": {
+    "file_name": "dataset_author_eval/sents/llama_factory_json/Dickens_Charles/train.json"
+  },
+  "author_eval_Dickens_Charles_val": {
+    "file_name": "dataset_author_eval/sents/llama_factory_json/Dickens_Charles/val.json"
+  },
+  "author_eval_Hardy_Thomas_train": {
+    "file_name": "dataset_author_eval/sents/llama_factory_json/Hardy_Thomas/train.json"
+  },
+  "author_eval_Hardy_Thomas_val": {
+    "file_name": "dataset_author_eval/sents/llama_factory_json/Hardy_Thomas/val.json"
+  },
+  "author_eval_Henty_G__A__train": {
+    "file_name": "dataset_author_eval/sents/llama_factory_json/Henty_G._A./train.json"
+  },
+  "author_eval_Henty_G__A__val": {
+    "file_name": "dataset_author_eval/sents/llama_factory_json/Henty_G._A./val.json"
+  },
+  "author_eval_Ruskin_John_train": {
+    "file_name": "dataset_author_eval/sents/llama_factory_json/Ruskin_John/train.json"
+  },
+  "author_eval_Ruskin_John_val": {
+    "file_name": "dataset_author_eval/sents/llama_factory_json/Ruskin_John/val.json"
+  },
+  "author_eval_Scott_Walter_train": {
+    "file_name": "dataset_author_eval/sents/llama_factory_json/Scott_Walter/train.json"
+  },
+  "author_eval_Scott_Walter_val": {
+    "file_name": "dataset_author_eval/sents/llama_factory_json/Scott_Walter/val.json"
+  },
+  "author_eval_Wheatley_Henry_B__train": {
+    "file_name": "dataset_author_eval/sents/llama_factory_json/Wheatley_Henry_B./train.json"
+  },
+  "author_eval_Wheatley_Henry_B__val": {
+    "file_name": "dataset_author_eval/sents/llama_factory_json/Wheatley_Henry_B./val.json"
+  },
+  "author_eval_Widger_David_train": {
+    "file_name": "dataset_author_eval/sents/llama_factory_json/Widger_David/train.json"
+  },
+  "author_eval_Widger_David_val": {
+    "file_name": "dataset_author_eval/sents/llama_factory_json/Widger_David/val.json"
+  }
+}

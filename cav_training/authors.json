@@ -1,0 +1,402 @@
+[
+  {
+    "author": "Louisa May Alcott",
+    "directory": "Alcott,_Louisa_May",
+    "source": "Project Gutenberg",
+    "role": "cav_only",
+    "train_chunks": 2000,
+    "validation_chunks": 500
+  },
+  {
+    "author": "L. Frank Baum",
+    "directory": "Baum,_L._Frank",
+    "source": "Project Gutenberg",
+    "role": "source",
+    "train_chunks": 2000,
+    "validation_chunks": 500
+  },
+  {
+    "author": "Charlotte Brontë",
+    "directory": "Brontë,_Charlotte",
+    "source": "Project Gutenberg",
+    "role": "source",
+    "train_chunks": 2000,
+    "validation_chunks": 500
+  },
+  {
+    "author": "Emily Brontë",
+    "directory": "Brontë,_Emily",
+    "source": "Project Gutenberg",
+    "role": "cav_only",
+    "train_chunks": 2000,
+    "validation_chunks": 451
+  },
+  {
+    "author": "Lewis Carroll",
+    "directory": "Carroll,_Lewis",
+    "source": "Project Gutenberg",
+    "role": "source",
+    "train_chunks": 2000,
+    "validation_chunks": 500
+  },
+  {
+    "author": "Robert W. Chambers",
+    "directory": "Chambers,_Robert_W.",
+    "source": "Project Gutenberg",
+    "role": "target",
+    "train_chunks": 2000,
+    "validation_chunks": 500
+  },
+  {
+    "author": "Charlotte Perkins Gilman",
+    "directory": "Charlotte Perkins Gilman",
+    "source": "StyleTunedLM",
+    "role": "high_resource",
+    "train_chunks": 2000,
+    "validation_chunks": 500
+  },
+  {
+    "author": "G. K. Chesterton",
+    "directory": "Chesterton,_G._K.",
+    "source": "Project Gutenberg",
+    "role": "cav_only",
+    "train_chunks": 2000,
+    "validation_chunks": 500
+  },
+  {
+    "author": "Agatha Christie",
+    "directory": "Christie,_Agatha",
+    "source": "Project Gutenberg",
+    "role": "target",
+    "train_chunks": 2000,
+    "validation_chunks": 500
+  },
+  {
+    "author": "Joseph Conrad",
+    "directory": "Conrad,_Joseph",
+    "source": "Project Gutenberg",
+    "role": "target",
+    "train_chunks": 2000,
+    "validation_chunks": 500
+  },
+  {
+    "author": "Charles Dickens",
+    "directory": "Dickens,_Charles",
+    "source": "Project Gutenberg",
+    "role": "source",
+    "train_chunks": 2000,
+    "validation_chunks": 500
+  },
+  {
+    "author": "Arthur Conan Doyle",
+    "directory": "Doyle,_Arthur_Conan",
+    "source": "Project Gutenberg",
+    "role": "target",
+    "train_chunks": 2000,
+    "validation_chunks": 500
+  },
+  {
+    "author": "George Eliot",
+    "directory": "Eliot,_George",
+    "source": "Project Gutenberg",
+    "role": "cav_only",
+    "train_chunks": 2000,
+    "validation_chunks": 500
+  },
+  {
+    "author": "F. Scott Fitzgerald",
+    "directory": "Fitzgerald,_F._Scott",
+    "source": "Project Gutenberg",
+    "role": "target",
+    "train_chunks": 2000,
+    "validation_chunks": 500
+  },
+  {
+    "author": "E. M. Forster",
+    "directory": "Forster,_E._M.",
+    "source": "Project Gutenberg",
+    "role": "target",
+    "train_chunks": 2000,
+    "validation_chunks": 500
+  },
+  {
+    "author": "Elizabeth Cleghorn Gaskell",
+    "directory": "Gaskell,_Elizabeth_Cleghorn",
+    "source": "Project Gutenberg",
+    "role": "cav_only",
+    "train_chunks": 2000,
+    "validation_chunks": 500
+  },
+  {
+    "author": "George Orwell",
+    "directory": "George Orwell",
+    "source": "StyleTunedLM",
+    "role": "high_resource",
+    "train_chunks": 2000,
+    "validation_chunks": 500
+  },
+  {
+    "author": "Thomas Hardy",
+    "directory": "Hardy,_Thomas",
+    "source": "Project Gutenberg",
+    "role": "source",
+    "train_chunks": 2000,
+    "validation_chunks": 500
+  },
+  {
+    "author": "G. A. Henty",
+    "directory": "Henty,_G._A.",
+    "source": "Project Gutenberg",
+    "role": "source",
+    "train_chunks": 2000,
+    "validation_chunks": 500
+  },
+  {
+    "author": "Washington Irving",
+    "directory": "Irving,_Washington",
+    "source": "Project Gutenberg",
+    "role": "cav_only",
+    "train_chunks": 2000,
+    "validation_chunks": 500
+  },
+  {
+    "author": "Henry James",
+    "directory": "James,_Henry",
+    "source": "Project Gutenberg",
+    "role": "cav_only",
+    "train_chunks": 2000,
+    "validation_chunks": 500
+  },
+  {
+    "author": "Jane Austen",
+    "directory": "Jane Austen",
+    "source": "StyleTunedLM",
+    "role": "high_resource",
+    "train_chunks": 2000,
+    "validation_chunks": 500
+  },
+  {
+    "author": "James Joyce",
+    "directory": "Joyce,_James",
+    "source": "Project Gutenberg",
+    "role": "cav_only",
+    "train_chunks": 2000,
+    "validation_chunks": 500
+  },
+  {
+    "author": "Rudyard Kipling",
+    "directory": "Kipling,_Rudyard",
+    "source": "Project Gutenberg",
+    "role": "target",
+    "train_chunks": 2000,
+    "validation_chunks": 500
+  },
+  {
+    "author": "Jack London",
+    "directory": "London,_Jack",
+    "source": "Project Gutenberg",
+    "role": "target",
+    "train_chunks": 2000,
+    "validation_chunks": 500
+  },
+  {
+    "author": "Mark Twain",
+    "directory": "Mark Twain",
+    "source": "StyleTunedLM",
+    "role": "high_resource",
+    "train_chunks": 2000,
+    "validation_chunks": 500
+  },
+  {
+    "author": "Herman Melville",
+    "directory": "Melville,_Herman",
+    "source": "Project Gutenberg",
+    "role": "cav_only",
+    "train_chunks": 2000,
+    "validation_chunks": 500
+  },
+  {
+    "author": "George Meredith",
+    "directory": "Meredith,_George",
+    "source": "Project Gutenberg",
+    "role": "cav_only",
+    "train_chunks": 2000,
+    "validation_chunks": 500
+  },
+  {
+    "author": "L. M. Montgomery",
+    "directory": "Montgomery,_L._M.",
+    "source": "Project Gutenberg",
+    "role": "target",
+    "train_chunks": 2000,
+    "validation_chunks": 500
+  },
+  {
+    "author": "Nathaniel Hawthorne",
+    "directory": "Nathaniel Hawthorne",
+    "source": "StyleTunedLM",
+    "role": "high_resource",
+    "train_chunks": 2000,
+    "validation_chunks": 500
+  },
+  {
+    "author": "Oscar Wilde",
+    "directory": "Oscar Wilde",
+    "source": "StyleTunedLM",
+    "role": "high_resource",
+    "train_chunks": 2000,
+    "validation_chunks": 500
+  },
+  {
+    "author": "P. G. Wodehouse",
+    "directory": "P. G. Wodehouse",
+    "source": "StyleTunedLM",
+    "role": "high_resource",
+    "train_chunks": 2000,
+    "validation_chunks": 500
+  },
+  {
+    "author": "Edgar Allan Poe",
+    "directory": "Poe,_Edgar_Allan",
+    "source": "Project Gutenberg",
+    "role": "cav_only",
+    "train_chunks": 2000,
+    "validation_chunks": 500
+  },
+  {
+    "author": "John Ruskin",
+    "directory": "Ruskin,_John",
+    "source": "Project Gutenberg",
+    "role": "source",
+    "train_chunks": 2000,
+    "validation_chunks": 500
+  },
+  {
+    "author": "Samuel Richardson",
+    "directory": "Samuel Richardson",
+    "source": "StyleTunedLM",
+    "role": "high_resource",
+    "train_chunks": 2000,
+    "validation_chunks": 500
+  },
+  {
+    "author": "Walter Scott",
+    "directory": "Scott,_Walter",
+    "source": "Project Gutenberg",
+    "role": "source",
+    "train_chunks": 2000,
+    "validation_chunks": 500
+  },
+  {
+    "author": "William Shakespeare",
+    "directory": "Shakespeare,_William",
+    "source": "Project Gutenberg",
+    "role": "cav_only",
+    "train_chunks": 2000,
+    "validation_chunks": 500
+  },
+  {
+    "author": "Mary Wollstonecraft Shelley",
+    "directory": "Shelley,_Mary_Wollstonecraft",
+    "source": "Project Gutenberg",
+    "role": "cav_only",
+    "train_chunks": 2000,
+    "validation_chunks": 500
+  },
+  {
+    "author": "Robert Louis Stevenson",
+    "directory": "Stevenson,_Robert_Louis",
+    "source": "Project Gutenberg",
+    "role": "cav_only",
+    "train_chunks": 2000,
+    "validation_chunks": 500
+  },
+  {
+    "author": "Bram Stoker",
+    "directory": "Stoker,_Bram",
+    "source": "Project Gutenberg",
+    "role": "cav_only",
+    "train_chunks": 2000,
+    "validation_chunks": 500
+  },
+  {
+    "author": "Jonathan Swift",
+    "directory": "Swift,_Jonathan",
+    "source": "Project Gutenberg",
+    "role": "cav_only",
+    "train_chunks": 2000,
+    "validation_chunks": 500
+  },
+  {
+    "author": "Henry David Thoreau",
+    "directory": "Thoreau,_Henry_David",
+    "source": "Project Gutenberg",
+    "role": "cav_only",
+    "train_chunks": 2000,
+    "validation_chunks": 500
+  },
+  {
+    "author": "Anthony Trollope",
+    "directory": "Trollope,_Anthony",
+    "source": "Project Gutenberg",
+    "role": "cav_only",
+    "train_chunks": 2000,
+    "validation_chunks": 500
+  },
+  {
+    "author": "Vernon Lee",
+    "directory": "Vernon Lee",
+    "source": "StyleTunedLM",
+    "role": "high_resource",
+    "train_chunks": 2000,
+    "validation_chunks": 500
+  },
+  {
+    "author": "Virginia Woolf",
+    "directory": "Virginia Woolf",
+    "source": "StyleTunedLM",
+    "role": "high_resource",
+    "train_chunks": 2000,
+    "validation_chunks": 500
+  },
+  {
+    "author": "H. G. Wells",
+    "directory": "Wells,_H._G.",
+    "source": "Project Gutenberg",
+    "role": "cav_only",
+    "train_chunks": 2000,
+    "validation_chunks": 500
+  },
+  {
+    "author": "Edith Wharton",
+    "directory": "Wharton,_Edith",
+    "source": "Project Gutenberg",
+    "role": "target",
+    "train_chunks": 2000,
+    "validation_chunks": 500
+  },
+  {
+    "author": "Henry B. Wheatley",
+    "directory": "Wheatley,_Henry_B.",
+    "source": "Project Gutenberg",
+    "role": "source",
+    "train_chunks": 2000,
+    "validation_chunks": 500
+  },
+  {
+    "author": "David Widger",
+    "directory": "Widger,_David",
+    "source": "Project Gutenberg",
+    "role": "source",
+    "train_chunks": 2000,
+    "validation_chunks": 500
+  },
+  {
+    "author": "Charlotte M. Yonge",
+    "directory": "Yonge,_Charlotte_M.",
+    "source": "Project Gutenberg",
+    "role": "cav_only",
+    "train_chunks": 2000,
+    "validation_chunks": 500
+  }
+]

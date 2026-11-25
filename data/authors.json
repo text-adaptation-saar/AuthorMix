@@ -1,0 +1,38 @@
+{
+  "high_resource_authors": {
+    "MT": "Mark Twain",
+    "VW": "Virginia Woolf",
+    "VL": "Vernon Lee",
+    "CPG": "Charlotte Perkins Gilman",
+    "GO": "George Orwell",
+    "JA": "Jane Austen",
+    "NH": "Nathaniel Hawthorne",
+    "OW": "Oscar Wilde",
+    "PGW": "P. G. Wodehouse",
+    "SR": "Samuel Richardson"
+  },
+  "source_authors": [
+    "Baum_L._Frank",
+    "Brontë_Charlotte",
+    "Carroll_Lewis",
+    "Dickens_Charles",
+    "Hardy_Thomas",
+    "Henty_G._A.",
+    "Ruskin_John",
+    "Scott_Walter",
+    "Wheatley_Henry_B.",
+    "Widger_David"
+  ],
+  "target_authors": [
+    "Fitzgerald_F._Scott",
+    "Forster_E._M.",
+    "Montgomery_L._M.",
+    "Kipling_Rudyard",
+    "London_Jack",
+    "Chambers_Robert_W.",
+    "Conrad_Joseph",
+    "Wharton_Edith",
+    "Doyle_Arthur_Conan",
+    "Christie_Agatha"
+  ]
+}
